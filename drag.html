@@ -1,0 +1,53 @@
+<html>
+<head>
+<script src="raphael.js"></script>
+</head>
+<body bgcolor="lightgray">
+<hr>
+<p>Click and Drag animations</p>
+<script>
+var paper = Raphael(0, 0, 1024, 1024);
+//--------------------------------------------
+var c1 = paper.circle(200, 230, 40);
+var c2 = paper.circle(300, 230, 40);
+var c3 = paper.circle(400, 230, 40);
+var c4 = paper.circle(500, 230, 40);
+c1.attr("fill","lightblue");
+c2.attr("fill","lightblue");
+c3.attr("fill","lightblue");
+c4.attr("fill","lightblue");
+var col= new Array("blue", "red", "yellow", "purple" ,"black", "orange", "green", "pink", "lightblue");
+var set=paper.set(c1, c2, c3, c4);
+
+var start = function () {
+this.ox = this.attr("cx");
+this.oy = this.attr("cy");
+this.animate({r: 70, opacity: .25}, 500, ">");}
+var move = function (dx, dy) {
+this.attr({cx: this.ox + dx, cy: this.oy + dy});
+}
+var up = function () {
+this.animate({r: 50, opacity: .5}, 500, ">");
+}
+
+set.click(function () {
+this.animate({r: (Math.random()*100)+10, opacity: .5}, 500, ">");
+this.attr("fill", col[Math.ceil(Math.random()*8)-1]);
+});
+
+function a() {
+c1.animate({r: (Math.random()*100)+10, opacity: .5}, 500, ">");
+c1.attr("fill", col[Math.ceil(Math.random()*9)-1]);
+c2.animate({r: (Math.random()*100)+10, opacity: .5}, 500, ">");
+c2.attr("fill", col[Math.ceil(Math.random()*9)-1]);
+c3.animate({r: (Math.random()*100)+10, opacity: .5}, 500, ">");
+c3.attr("fill", col[Math.ceil(Math.random()*9)-1]);
+c4.animate({r: (Math.random()*100)+10, opacity: .5}, 500, ">");
+c4.attr("fill", col[Math.ceil(Math.random()*9)-1]);
+}
+
+set.drag(move, start, up);
+setInterval(function(){a()},300);
+</script>
+</body>
+</html>

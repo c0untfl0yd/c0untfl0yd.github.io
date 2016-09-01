@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Title</title>
+		<title>c0untfl0yd.github.io/Wha71s7heMa7rix/</title>
 		<script src="jquery-2.1.4.min.js"></script>
 		<style>
 			*{
@@ -52,7 +52,7 @@ FB.getLoginStatus(function(response) {
     // request, and the time the access token 
     // and signed request each expire
 	
-	$('#content').append('loggedin authorised app</br>');
+	$('#content').append('You are logged in to Facebook and you have authorisation.</br>');
 	
 	FB.api('/me',
 	{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"},
@@ -76,10 +76,10 @@ FB.getLoginStatus(function(response) {
   } else if (response.status === 'not_authorized') {
     // the user is logged in to Facebook, 
     // but has not authenticated your app
-	$('#content').append('loggedin not authorised app</br>');
+	$('#content').append('You are logged in to Facebook and DON`T you have authorisation.</br>');
   } else {
     // the user isn't logged in to Facebook.
-	$('#content').append('not log in fb</br>');
+	$('#content').append('You are NOT logged in to Facebook.</br>');
   }
  });
   };

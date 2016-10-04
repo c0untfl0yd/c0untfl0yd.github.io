@@ -165,7 +165,7 @@ FB.getLoginStatus(function(response) {
 		<div id="here_div" style="min-width: 0px;">
 			<div class="containerCentered " style="min-width: 0px;">
 				
-				<img id='nav_image' style="margin-top: -15px; -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%; min-width: 0px;width: 60px;" src="lib/GitHub-Mark-64px.png">	
+				<img id='nav_image' style="margin-top: -15px; -webkit-border-radius: 50%; -moz-border-radius: 50%; -o-border-radius: 50%;  border-radius: 50%; min-width: 0px;width: 60px;" src="lib/GitHub-Mark-64px.png">	
 				
 				<nav id="main-menu" class="main-menu" role="navigation" style="min-width: 0px;height:34px; vertical-align:middle;">
 					<ul style="min-width: 0px;">
@@ -190,7 +190,7 @@ FB.getLoginStatus(function(response) {
         <div id="hero" class="hero-bg content-block" style="min-width: 0px; background-image: url(&quot;lib/bg.jpg&quot;); background-position: center top; background-repeat: no-repeat;">
 
              
-				<img style=" -webkit-border-radius: 50%; -moz-border-radius: 50%; border-radius: 50%;  margin-top: 15px; min-width: 0px;" src="lib/avatars-000183852507-oosmtn-t200x200.jpg">
+				<img style=" -webkit-border-radius: 50%; -moz-border-radius: 50%; -o-border-radius: 50%;  border-radius: 50%;  margin-top: 15px; min-width: 0px;" src="lib/avatars-000183852507-oosmtn-t200x200.jpg">
                 <h1 style="min-width: 0px;">Pavlin Koritarov</h1>
                 <p style="min-width: 0px;">Mathematician / Software Developer</p><br style="min-width: 0px;">
                 <p style="min-width: 0px;">Hello and welcome to my GitHub page. My name is Pavlin Koritarov and I am a software developer. Some of my favorite technologies to use are </br>PHP, HTML, CSS, MySQL, Apache Server, Java, Java EE, JavaScript, jQuery, AJAX, Twitter Bootstrap Framework, Facebook API, Eclipse IDE, C++, C#, ASP.NET, MS Sql Server, MS Visual Web Developer 2010, GitHub, Sitecore, Wordpress, Adobe CQ5. You can check out my repositories at https://github.com/c0untfl0yd/.</p><br style="min-width: 0px;">
@@ -205,33 +205,22 @@ FB.getLoginStatus(function(response) {
 
 <div role="main" id="main" class="containerMobileFullWidth" style="min-width: 0px;text-align:center;">
 
-
-<!-- Button trigger modal 
-<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" style="min-width: 0px;">
-  Launch demo modal
-</button>
--->
-
-
-<!-- Modal 
+<!-- Modal -->
 <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" style="min-width: 0px; display: none;">
   <div class="modal-dialog" role="document" style="min-width: 0px;">
     <div class="modal-content" style="min-width: 0px;">
       <div class="modal-header" style="min-width: 0px;">
         <button type="button" class="close" data-dismiss="modal" aria-label="Close" style="min-width: 0px;"><span aria-hidden="true" style="min-width: 0px;">×</span></button>
-        <h4 class="modal-title" id="myModalLabel" style="min-width: 0px;">Modal title</h4>
       </div>
-      <div class="modal-body" style="min-width: 0px;">
-        ...
-      </div>
-      <div class="modal-footer" style="min-width: 0px;">
-        <button type="button" class="btn btn-default" data-dismiss="modal" style="min-width: 0px;">Close</button>
-        <button type="button" class="btn btn-primary" style="min-width: 0px;">Save changes</button>
+      <div class="modal-body" style="min-width: 0px;text-align:center;">
+        </br>Currently you are not using Google Chrome
+        </br>Get Chrome here
+        </br><a href="https://www.google.com/chrome/">https://www.google.com/chrome/</a>
       </div>
     </div>
   </div>
 </div>
--->
+<!-- Modal -->
 
 <!-- comments -->
 <div style="margin-left: 10%; margin-right: 10%;">
@@ -280,6 +269,17 @@ if($(window).width()<=380){
 		console.log("%c WARNING!!!", "color:#FF8F1C; font-size:40px;");
 		console.log("%c This browser feature is for developers only. Please do not copy-paste any code or run any scripts here.", "color:#003087; font-size:12px;");
 	}
+
+	var isChromium = window.chrome,
+    winNav = window.navigator,
+    vendorName = winNav.vendor,
+    isOpera = winNav.userAgent.indexOf("OPR") > -1,
+    isIEedge = winNav.userAgent.indexOf("Edge") > -1,
+    isIOSChrome = winNav.userAgent.match("CriOS");
+	if(isIOSChrome){} 
+	else if(isChromium !== null && isChromium !== undefined && vendorName === "Google Inc." && isOpera == false && isIEedge == false) {} 
+	else { $('#myModal').modal('show'); }
+
 });
 </script>
 

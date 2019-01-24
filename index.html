@@ -63,7 +63,7 @@
   var js, fjs = d.getElementsByTagName(s)[0];
   if (d.getElementById(id)) return;
   js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.7&appId=292841464411131";
+  js.src = "//connect.facebook.net/en_GB/sdk.js";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
 
@@ -73,7 +73,7 @@ function facebook_init_now(){
 			FB.init({
 			  appId      : '292841464411131',
 			  xfbml      : true,
-			  version    : 'v2.7'
+			  version    : 'v2.8'
 			});
 			
 
@@ -84,7 +84,7 @@ function facebook_init_now(){
 					var accessToken = response.authResponse.accessToken;
 					
 					FB.api('/me',
-						{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
+						{fields: "id,about,age_range,picture,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
 						},
 						function(response) {
 						//console.log(JSON.stringify(response));
@@ -112,7 +112,7 @@ function facebook_get_login_status(){
 						var accessToken = response.authResponse.accessToken;
 
 						FB.api('/me',
-							{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
+							{fields: "id,about,age_range,picture,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
 							},
 							function(response) {
 							//console.log(JSON.stringify(response));
@@ -131,27 +131,41 @@ function facebook_get_login_status(){
 }
 
 function login() {
-FB.getLoginStatus(function(response) {
-		if (response.status === 'connected') {
-		} 
-		else {
-			FB.login(function(response) {
-				if (response.authResponse) {
-				 //console.log('Welcome!  Fetching your information.... ');
-				 FB.api('/me',
-										{fields: "id,about,age_range,picture,bio,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
-										},
-										function(response) {
-										//console.log(JSON.stringify(response));
-										$('#nav_image').attr('src', response.picture.data.url);
-										$('#big_button').html('Welcome '+response.name);
-									});
-				} else {
-				 //console.log('User cancelled login or did not fully authorize.');
-				}
-			});
-		}
-	});   
+
+	FB.getLoginStatus(function(response) {
+			if (response.status === 'connected') {
+			} 
+			else {
+				FB.login(function(response) {
+					if (response.authResponse) {
+					 //console.log('Welcome!  Fetching your information.... ');
+					 FB.api('/me',
+											{fields: "id,about,age_range,picture,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
+											},
+											function(response) {
+											//console.log(JSON.stringify(response));
+											$('#nav_image').attr('src', response.picture.data.url);
+											$('#big_button').html('Welcome '+response.name);
+										});
+					} else {
+					 //console.log('User cancelled login or did not fully authorize.');
+					}
+				});
+			}
+		}); 
+	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~ gg
+	
+	FB.api('/me',
+			{fields: "id,about,age_range,picture,birthday,context,email,first_name,gender,hometown,link,location,middle_name,name,timezone,website,work"
+			},
+			function(response) {
+			//console.log(JSON.stringify(response));
+			$('#nav_image').attr('src', response.picture.data.url);
+			$('#big_button').html('Welcome '+response.name);
+	});
+	
+//~~~~~~~~~~~~~~~~~~~~~~~~~~ gg
 }
   
 </script>
